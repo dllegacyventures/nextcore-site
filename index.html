@@ -28,13 +28,6 @@
   "email": "support@nextcore-technologies.com",
   "telephone": "+1-757-906-8562",
   "description": "NextCore builds and operates AI agents and automations for small and mid-sized companies. Engagements run as build projects and monthly retainers. All work is performed remotely.",
-  "foundingLocation": "Delaware, United States",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "IFZA Properties, Dubai Silicon Oasis",
-    "addressLocality": "Dubai",
-    "addressCountry": "AE"
-  },
   "areaServed": [
     { "@type": "Country", "name": "United States" },
     { "@type": "Place", "name": "European Union" }
@@ -151,6 +144,15 @@ header.stuck{border-bottom-color:var(--line);background:rgba(10,11,13,.88)}
 }
 .cta:hover{background:var(--accent-hi);transform:translateY(-1px);box-shadow:0 6px 22px -8px rgba(217,119,87,.7),0 1px 0 rgba(255,255,255,.18) inset}
 .cta:active{transform:translateY(0)}
+.nav-right{display:flex;align-items:center;gap:10px}
+.langs{display:flex;gap:2px;border:1px solid var(--line);border-radius:7px;padding:2px;background:var(--surf)}
+.langs button{
+  background:transparent;border:0;cursor:pointer;color:var(--ink-3);
+  font:500 11px/1 var(--mono);letter-spacing:.1em;padding:7px 9px;border-radius:5px;
+  transition:color .18s ease,background .18s ease;
+}
+.langs button:hover{color:var(--ink-2)}
+.langs button[aria-pressed="true"]{color:var(--accent);background:var(--accent-lo)}
 @media(max-width:760px){.navlinks{display:none}}
 
 /* ─────────────────────────────────────────────  SPINE  ── */
@@ -180,10 +182,11 @@ header.stuck{border-bottom-color:var(--line);background:rgba(10,11,13,.88)}
 
 .eyebrow{
   display:inline-flex;align-items:center;gap:10px;margin:0 0 26px;
-  font:400 11px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-2);
-  border:1px solid var(--line);background:var(--surf);border-radius:999px;padding:8px 15px 8px 12px;
+  font:400 11px/1.6 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-2);
+  border:1px solid var(--line);background:var(--surf);border-radius:999px;padding:7px 16px 7px 13px;
+  max-width:100%;
 }
-.dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex:none;position:relative}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex:none;position:relative;margin-top:1px}
 .dot::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:1px solid var(--accent);opacity:.5;animation:ping 2.8s var(--ease) infinite}
 @keyframes ping{0%{transform:scale(.7);opacity:.6}70%,100%{transform:scale(1.5);opacity:0}}
 
@@ -297,38 +300,9 @@ h2{font:300 clamp(26px,3.6vw,38px)/1.16 var(--serif);letter-spacing:-.02em;margi
 .steps b{display:block;font:500 17px/1.4 var(--sans);color:var(--ink);margin-bottom:6px;letter-spacing:-.01em}
 .steps span{color:var(--ink-2);font-size:15.5px}
 
-/* ── record / company ── */
-.record{
-  border:1px solid var(--line);border-radius:12px;overflow:hidden;
-  background:linear-gradient(180deg,var(--surf-2),var(--bg-2));
-}
-.record-bar{
-  display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
-  padding:14px 24px;border-bottom:1px solid var(--line);
-  font:400 10.5px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);
-}
-.seal{display:inline-flex;align-items:center;gap:8px;color:var(--accent)}
-.kv{display:grid;grid-template-columns:210px 1fr;margin:0;padding:0}
-@media(max-width:640px){.kv{grid-template-columns:1fr}}
-.kv dt{
-  padding:18px 24px;border-top:1px solid var(--line);
-  font:400 10.5px/1.6 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);
-}
-.kv dd{
-  margin:0;padding:18px 24px;border-top:1px solid var(--line);border-left:1px solid var(--line);
-  font-size:16px;color:var(--ink);
-}
-@media(max-width:640px){
-  .kv dt{padding-bottom:0;border-top:1px solid var(--line)}
-  .kv dd{border-top:0;border-left:0;padding-top:6px}
-}
-.kv dt:first-of-type,.kv dd:first-of-type{border-top:0}
-@media(max-width:640px){.kv dd:first-of-type{border-top:0}}
-.kv a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(217,119,87,.32);transition:border-color .2s ease}
-.kv a:hover{border-color:var(--accent)}
 .copy{
   background:transparent;border:1px solid var(--line-2);
-  color:var(--ink-3);border-radius:5px;padding:4px 9px;cursor:pointer;
+  color:var(--ink-3);border-radius:5px;padding:6px 10px;cursor:pointer;
   font:400 10.5px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;
   transition:color .18s ease,border-color .18s ease,background .18s ease;
 }
@@ -336,8 +310,6 @@ h2{font:300 clamp(26px,3.6vw,38px)/1.16 var(--serif);letter-spacing:-.02em;margi
 .copy.ok{color:var(--accent);border-color:var(--accent)}
 
 /* ── contact ── */
-.contact-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:start}
-@media(max-width:900px){.contact-grid{grid-template-columns:1fr}}
 .big-mail{
   display:inline-block;font:300 clamp(22px,3.4vw,34px)/1.25 var(--serif);
   color:var(--ink);text-decoration:none;letter-spacing:-.02em;word-break:break-word;
@@ -349,8 +321,6 @@ h2{font:300 clamp(26px,3.6vw,38px)/1.16 var(--serif);letter-spacing:-.02em;margi
 .contact-row{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:22px}
 .tel{font:400 16px/1 var(--mono);color:var(--ink-2);text-decoration:none;letter-spacing:.02em;transition:color .2s ease}
 .tel:hover{color:var(--accent)}
-.addr{margin:0;color:var(--ink-2);font-size:15.5px;line-height:1.75}
-.addr dt{font:400 10.5px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);margin-bottom:10px}
 
 /* ─────────────────────────────────────────────  FOOTER  ── */
 footer{padding:44px 0 76px;color:var(--ink-3);font-size:13.5px;line-height:1.7}
@@ -374,7 +344,7 @@ footer a:not(.brand):hover{color:var(--accent);border-color:var(--accent)}
 /* ─────────────────────────────────────────────  PRINT  ── */
 @media print{
   :root{--bg:#fff;--bg-2:#fff;--surf:#fff;--surf-2:#fff;--line:#D5DADE;--line-2:#C2C8CE;--ink:#101418;--ink-2:#3D454D;--ink-3:#6B7480;--accent:#9C4B2E;--accent-lo:transparent}
-  .backdrop,.spine,.progress,.actions,.copy,.leds,.panel-note{display:none!important}
+  .backdrop,.spine,.progress,.actions,.copy,.leds,.panel-note,.langs{display:none!important}
   header,header.stuck{position:static;background:#fff;border-bottom:1px solid var(--line);backdrop-filter:none;-webkit-backdrop-filter:none}
   .cta{background:transparent;color:var(--accent);border:1px solid var(--accent);box-shadow:none}
   .mark rect{stroke:#C2C8CE}
@@ -384,20 +354,18 @@ footer a:not(.brand):hover{color:var(--accent);border-color:var(--accent)}
   .fact:first-child{padding-left:0;border-left:0}
   .steps li::before,.steps li.lit::before{background:#fff;border-color:var(--accent);color:var(--accent)}
   .steps .fill{background:var(--accent)}
-  .panel,.record,.grid-3{box-shadow:none;break-inside:avoid}
+  .panel,.grid-3{box-shadow:none;break-inside:avoid}
   body{font-size:11pt}
   h1{font-size:26pt}h2{font-size:16pt}
   section{padding:18pt 0;break-inside:avoid}
   a{color:#101418;text-decoration:none}
-  .kv a::after{content:" (" attr(href) ")";font:9pt var(--mono);color:#6B7480}
-  .kv a[href^="mailto:"]::after,.kv a[href^="tel:"]::after{content:""}
   [data-reveal]{opacity:1!important;transform:none!important;filter:none!important}
 }
 </style>
 </head>
 <body>
 
-<a class="skip" href="#main">Skip to content</a>
+<a class="skip" href="#main" data-i18n="a11y.skip">Skip to content</a>
 <div class="progress" id="progress" aria-hidden="true"></div>
 
 <div class="backdrop" aria-hidden="true">
@@ -411,7 +379,7 @@ footer a:not(.brand):hover{color:var(--accent);border-color:var(--accent)}
 <header id="hdr">
   <div class="wrap">
     <nav class="nav" aria-label="Primary">
-      <a class="brand" href="/" aria-label="NextCore Technologies — home">
+      <a class="brand" href="/" aria-label="NextCore Technologies">
         <svg class="mark" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <rect x="1" y="1" width="22" height="22" rx="6" stroke="#2E343C"/>
           <circle cx="12" cy="12" r="7" stroke="#D97757" stroke-opacity=".45"/>
@@ -420,37 +388,40 @@ footer a:not(.brand):hover{color:var(--accent);border-color:var(--accent)}
         <b>Next<span>Core</span></b>
       </a>
       <div class="navlinks">
-        <a href="#services">Services</a>
-        <a href="#how">How we work</a>
-        <a href="#company">Company</a>
+        <a href="#services" data-i18n="nav.services">Services</a>
+        <a href="#how" data-i18n="nav.how">How we work</a>
+        <a href="#company" data-i18n="nav.company">Company</a>
       </div>
-      <a class="cta" href="#contact">Contact</a>
+      <div class="nav-right">
+        <div class="langs" id="langs" role="group" aria-label="Language"></div>
+        <a class="cta" href="#contact" data-i18n="nav.contact">Contact</a>
+      </div>
     </nav>
   </div>
 </header>
 
 <aside class="spine" aria-label="Section index">
   <ol>
-    <li><a href="#services" data-spine="services"><i></i>01 Services</a></li>
-    <li><a href="#how" data-spine="how"><i></i>02 Method</a></li>
-    <li><a href="#company" data-spine="company"><i></i>03 Company</a></li>
-    <li><a href="#contact" data-spine="contact"><i></i>04 Contact</a></li>
+    <li><a href="#services" data-spine="services"><i></i><span data-i18n="spine.services">01 Services</span></a></li>
+    <li><a href="#how" data-spine="how"><i></i><span data-i18n="spine.how">02 Method</span></a></li>
+    <li><a href="#company" data-spine="company"><i></i><span data-i18n="spine.company">03 Company</span></a></li>
+    <li><a href="#contact" data-spine="contact"><i></i><span data-i18n="spine.contact">04 Contact</span></a></li>
   </ol>
 </aside>
 
 <main id="main">
 <div class="wrap">
 
-  <!-- ── HERO ───────────────────────────────────────────── -->
+  <!-- HERO -->
   <div class="hero">
     <div class="hero-grid">
       <div>
-        <p class="eyebrow" data-reveal style="--d:0ms"><span class="dot"></span>AI Systems &amp; Automation · United States &amp; European Union</p>
-        <h1 data-reveal style="--d:70ms">AI systems that take over the <em>repeatable work</em>.</h1>
-        <p class="lede" data-reveal style="--d:140ms">NextCore builds and operates AI agents and automations for small and mid-sized companies. We take processes that people repeat every day — qualifying enquiries, answering customers, producing content, running internal workflows — and hand them to <strong>systems that do not forget and do not wait</strong>. Engagements run as build projects and monthly retainers. All work is performed remotely.</p>
+        <p class="eyebrow" data-reveal style="--d:0ms"><span class="dot"></span><span data-i18n="hero.eyebrow">AI Systems &amp; Automation &middot; United States &amp; European Union</span></p>
+        <h1 data-reveal data-i18n-html data-i18n="hero.h1" style="--d:70ms">AI systems that take over the <em>repeatable work</em>.</h1>
+        <p class="lede" data-reveal data-i18n-html data-i18n="hero.lede" style="--d:140ms">NextCore builds and operates AI agents and automations for small and mid-sized companies. We take processes that people repeat every day &mdash; qualifying enquiries, answering customers, producing content, running internal workflows &mdash; and hand them to <strong>systems that do not forget and do not wait</strong>. Engagements run as build projects and monthly retainers. All work is performed remotely.</p>
         <div class="actions" data-reveal style="--d:210ms">
-          <a class="cta" href="#contact">Start an assessment</a>
-          <a class="btn-ghost" href="#how">How we work
+          <a class="cta" href="#contact" data-i18n="hero.cta">Start an assessment</a>
+          <a class="btn-ghost" href="#how"><span data-i18n="hero.cta2">How we work</span>
             <svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
         </div>
@@ -458,126 +429,104 @@ footer a:not(.brand):hover{color:var(--accent);border-color:var(--accent)}
 
       <div class="panel" data-reveal style="--d:280ms" aria-hidden="true">
         <div class="panel-bar">
-          <span>Runtime · enquiry agent</span>
+          <span data-i18n="panel.title">Runtime &middot; enquiry agent</span>
           <div class="leds"><i></i><i></i><i></i></div>
         </div>
         <ul class="trace" id="trace">
-          <li><span class="idx">00</span><span>enquiry received</span><span class="tag">web form</span></li>
-          <li><span class="idx">01</span><span>intent &amp; fit classified</span><span class="tag">agent</span></li>
-          <li><span class="idx">02</span><span>record created</span><span class="tag">crm</span></li>
-          <li><span class="idx">03</span><span>reply drafted, sent</span><span class="tag">email</span></li>
-          <li><span class="idx">04</span><span>follow-up scheduled</span><span class="tag">t+2d</span></li>
-          <li><span class="idx">05</span><span>outcome logged</span><span class="tag">report</span></li>
+          <li><span class="idx">00</span><span data-i18n="trace.0">enquiry received</span><span class="tag" data-i18n="trace.0t">web form</span></li>
+          <li><span class="idx">01</span><span data-i18n="trace.1">intent &amp; fit classified</span><span class="tag" data-i18n="trace.1t">agent</span></li>
+          <li><span class="idx">02</span><span data-i18n="trace.2">record created</span><span class="tag" data-i18n="trace.2t">crm</span></li>
+          <li><span class="idx">03</span><span data-i18n="trace.3">reply drafted, sent</span><span class="tag" data-i18n="trace.3t">email</span></li>
+          <li><span class="idx">04</span><span data-i18n="trace.4">follow-up scheduled</span><span class="tag" data-i18n="trace.4t">t+2d</span></li>
+          <li><span class="idx">05</span><span data-i18n="trace.5">outcome logged</span><span class="tag" data-i18n="trace.5t">report</span></li>
         </ul>
-        <p class="panel-note">Schematic of an enquiry-handling agent. Illustration, not live data.</p>
+        <p class="panel-note" data-i18n="panel.note">Schematic of an enquiry-handling agent. Illustration, not live data.</p>
       </div>
     </div>
   </div>
 
-  <!-- ── FACTS ──────────────────────────────────────────── -->
+  <!-- FACTS -->
   <dl class="facts" data-reveal>
-    <div class="fact"><dt>Model</dt><dd>Build projects &amp; retainers</dd></div>
-    <div class="fact"><dt>Markets</dt><dd>United States, European Union</dd></div>
-    <div class="fact"><dt>Delivery</dt><dd>Fully remote</dd></div>
+    <div class="fact"><dt data-i18n="fact.model">Model</dt><dd data-i18n="fact.modelv">Build projects &amp; retainers</dd></div>
+    <div class="fact"><dt data-i18n="fact.markets">Markets</dt><dd data-i18n="fact.marketsv">United States, European Union</dd></div>
+    <div class="fact"><dt data-i18n="fact.delivery">Delivery</dt><dd data-i18n="fact.deliveryv">Fully remote</dd></div>
   </dl>
 
-  <!-- ── SERVICES ───────────────────────────────────────── -->
+  <!-- SERVICES -->
   <section id="services">
     <div class="sec-head">
-      <div class="sec-num" data-reveal>01 / Services</div>
+      <div class="sec-num" data-reveal data-i18n="sec.1">01 / Services</div>
       <div>
-        <h2 data-reveal style="--d:60ms">What we do</h2>
-        <p class="sub" data-reveal style="--d:110ms">Three services, delivered as one system. The client keeps the business; we supply the machinery that runs inside it.</p>
+        <h2 data-reveal data-i18n="services.h" style="--d:60ms">What we do</h2>
+        <p class="sub" data-reveal data-i18n="services.sub" style="--d:110ms">Three services, delivered as one system. The client keeps the business; we supply the machinery that runs inside it.</p>
       </div>
     </div>
     <div class="grid-3">
       <article class="card" data-reveal style="--d:0ms">
         <span class="n">01</span>
-        <h3>AI agent build</h3>
-        <p>We design and build the agent: what it is allowed to do, what it must never do, which tools it can reach, and how it reports back. Delivered inside the client's existing stack, not as a separate product to learn.</p>
+        <h3 data-i18n="svc.1h">AI agent build</h3>
+        <p data-i18n="svc.1p">We design and build the agent: what it is allowed to do, what it must never do, which tools it can reach, and how it reports back. Delivered inside the client&rsquo;s existing stack, not as a separate product to learn.</p>
         <span class="ghost" aria-hidden="true">01</span>
       </article>
       <article class="card" data-reveal style="--d:90ms">
         <span class="n">02</span>
-        <h3>Workflow automation</h3>
-        <p>Enquiry handling, follow-up, document generation, research and reporting. Anything made of repeatable steps becomes a process that runs without someone starting it.</p>
+        <h3 data-i18n="svc.2h">Workflow automation</h3>
+        <p data-i18n="svc.2p">Enquiry handling, follow-up, document generation, research and reporting. Anything made of repeatable steps becomes a process that runs without someone starting it.</p>
         <span class="ghost" aria-hidden="true">02</span>
       </article>
       <article class="card" data-reveal style="--d:180ms">
         <span class="n">03</span>
-        <h3>Operation &amp; maintenance</h3>
-        <p>Models change, interfaces change, business rules change. On a retainer we keep the systems running and adjust them, so they still work in twelve months.</p>
+        <h3 data-i18n="svc.3h">Operation &amp; maintenance</h3>
+        <p data-i18n="svc.3p">Models change, interfaces change, business rules change. On a retainer we keep the systems running and adjust them, so they still work in twelve months.</p>
         <span class="ghost" aria-hidden="true">03</span>
       </article>
     </div>
   </section>
 
-  <!-- ── HOW ────────────────────────────────────────────── -->
+  <!-- METHOD -->
   <section id="how">
     <div class="sec-head">
-      <div class="sec-num" data-reveal>02 / Method</div>
+      <div class="sec-num" data-reveal data-i18n="sec.2">02 / Method</div>
       <div>
-        <h2 data-reveal style="--d:60ms">How we work</h2>
-        <p class="sub" data-reveal style="--d:110ms">Four steps, the same for every engagement.</p>
+        <h2 data-reveal data-i18n="how.h" style="--d:60ms">How we work</h2>
+        <p class="sub" data-reveal data-i18n="how.sub" style="--d:110ms">Four steps, the same for every engagement.</p>
       </div>
     </div>
     <ol class="steps" id="steps">
       <span class="fill" aria-hidden="true"></span>
-      <li data-reveal style="--d:0ms"><b>Assessment</b><span>We map which work is repeated and which of it can be handed over. Fixed scope, fixed fee.</span></li>
-      <li data-reveal style="--d:80ms"><b>Build</b><span>We implement the agents and automations and connect them to the tools already in use. Typical build time is two to four weeks.</span></li>
-      <li data-reveal style="--d:160ms"><b>Operation</b><span>We run and adjust the systems. Reporting is weekly, against numbers agreed up front.</span></li>
-      <li data-reveal style="--d:240ms"><b>Handover or continuation</b><span>The client either takes the systems over or we keep operating them on a retainer.</span></li>
+      <li data-reveal style="--d:0ms"><b data-i18n="step.1h">Assessment</b><span data-i18n="step.1p">We map which work is repeated and which of it can be handed over. Fixed scope, fixed fee.</span></li>
+      <li data-reveal style="--d:80ms"><b data-i18n="step.2h">Build</b><span data-i18n="step.2p">We implement the agents and automations and connect them to the tools already in use. Typical build time is two to four weeks.</span></li>
+      <li data-reveal style="--d:160ms"><b data-i18n="step.3h">Operation</b><span data-i18n="step.3p">We run and adjust the systems. Reporting is weekly, against numbers agreed up front.</span></li>
+      <li data-reveal style="--d:240ms"><b data-i18n="step.4h">Handover or continuation</b><span data-i18n="step.4p">The client either takes the systems over or we keep operating them on a retainer.</span></li>
     </ol>
   </section>
 
-  <!-- ── COMPANY ────────────────────────────────────────── -->
+  <!-- COMPANY -->
   <section id="company">
     <div class="sec-head">
-      <div class="sec-num" data-reveal>03 / Company</div>
+      <div class="sec-num" data-reveal data-i18n="sec.3">03 / Company</div>
       <div>
-        <h2 data-reveal style="--d:60ms">Company</h2>
-        <p class="sub" data-reveal style="--d:110ms">NextCore is operated by M. De Luca. The company works with a small number of business clients at a time; we do not sell courses, memberships or consumer products.</p>
+        <h2 data-reveal data-i18n="company.h" style="--d:60ms">Company</h2>
+        <p class="sub" data-reveal data-i18n="company.sub" style="--d:110ms">NextCore is operated by M. De Luca. The company works with a small number of business clients at a time; we do not sell courses, memberships or consumer products.</p>
       </div>
-    </div>
-    <div class="record" data-reveal>
-      <div class="record-bar">
-        <span>Registered entity · record of details</span>
-        <span class="seal">
-          <svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1.5l5.5 2.4v4c0 3.3-2.3 5.6-5.5 6.6-3.2-1-5.5-3.3-5.5-6.6v-4L8 1.5z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/><path d="M5.8 8.1l1.6 1.6 3-3.2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          Delaware, US
-        </span>
-      </div>
-      <dl class="kv">
-        <dt>Legal name</dt><dd>NextCore Technologies Limited Liability Company</dd>
-        <dt>Registered</dt><dd>Delaware, United States</dd>
-        <dt>Tax ID (EIN)</dt><dd>38-4398548</dd>
-        <dt>Business address</dt><dd>IFZA Properties, Dubai Silicon Oasis<br>Dubai, United Arab Emirates</dd>
-        <dt>Managing member</dt><dd>M. De Luca</dd>
-      </dl>
     </div>
   </section>
 
-  <!-- ── CONTACT ────────────────────────────────────────── -->
+  <!-- CONTACT -->
   <section id="contact">
     <div class="sec-head">
-      <div class="sec-num" data-reveal>04 / Contact</div>
+      <div class="sec-num" data-reveal data-i18n="sec.4">04 / Contact</div>
       <div>
-        <h2 data-reveal style="--d:60ms">Contact</h2>
-        <p class="sub" data-reveal style="--d:110ms">Enquiries are answered within one business day.</p>
+        <h2 data-reveal data-i18n="contact.h" style="--d:60ms">Contact</h2>
+        <p class="sub" data-reveal data-i18n="contact.sub" style="--d:110ms">Enquiries are answered within one business day.</p>
       </div>
     </div>
-    <div class="contact-grid">
-      <div data-reveal>
-        <a class="big-mail" href="mailto:support@nextcore-technologies.com">support@nextcore-technologies.com</a>
-        <div class="contact-row">
-          <a class="tel" href="tel:+17579068562">+1 757 906-8562</a>
-          <button class="copy" id="copy" type="button" data-mail="support@nextcore-technologies.com">Copy email</button>
-        </div>
+    <div data-reveal>
+      <a class="big-mail" href="mailto:support@nextcore-technologies.com">support@nextcore-technologies.com</a>
+      <div class="contact-row">
+        <a class="tel" href="tel:+17579068562">+1 757 906-8562</a>
+        <button class="copy" id="copy" type="button" data-mail="support@nextcore-technologies.com" data-i18n="contact.copy">Copy email</button>
       </div>
-      <dl class="addr" data-reveal style="--d:90ms">
-        <dt>Address</dt>
-        <dd style="margin:0">IFZA Properties, Dubai Silicon Oasis<br>Dubai, United Arab Emirates</dd>
-      </dl>
     </div>
   </section>
 
@@ -587,7 +536,7 @@ footer a:not(.brand):hover{color:var(--accent);border-color:var(--accent)}
 <div class="wrap">
   <footer>
     <div class="foot-top">
-      <a class="brand" href="/" aria-label="NextCore Technologies — home">
+      <a class="brand" href="/" aria-label="NextCore Technologies">
         <svg class="mark" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <rect x="1" y="1" width="22" height="22" rx="6" stroke="#2E343C"/>
           <circle cx="12" cy="12" r="7" stroke="#D97757" stroke-opacity=".45"/>
@@ -595,23 +544,161 @@ footer a:not(.brand):hover{color:var(--accent);border-color:var(--accent)}
         </svg>
         <b>Next<span>Core</span></b>
       </a>
-      <div class="foot-meta">Delaware, US · EIN 38-4398548</div>
+      <div class="foot-meta">support@nextcore-technologies.com</div>
     </div>
-    <p>&copy; 2026 NextCore Technologies Limited Liability Company. All rights reserved. · <a href="#company">Company details</a></p>
-    <p>NextCore provides business-to-business services only. We do not offer investment advice, and we make no representations about earnings.</p>
+    <p data-i18n="foot.copy">&copy; 2026 NextCore Technologies Limited Liability Company. All rights reserved.</p>
+    <p data-i18n="foot.legal">NextCore provides business-to-business services only. We do not offer investment advice, and we make no representations about earnings.</p>
   </footer>
 </div>
 
 </div><!-- /shell -->
 
 <script>
+/* ── i18n ─────────────────────────────────────────────────
+   Static hosting has no server-side geo lookup, so the language
+   follows the visitor's browser preference (navigator.languages).
+   A manual choice always wins and is remembered.               */
+var I18N = {
+  en: {
+    "meta.title": "NextCore Technologies Limited Liability Company \u2014 AI Systems for Business",
+    "meta.desc": "NextCore Technologies builds and operates AI agents and automations for small and mid-sized companies in the US and EU. Build projects and monthly retainers.",
+    "a11y.skip": "Skip to content",
+    "nav.services": "Services", "nav.how": "How we work", "nav.company": "Company", "nav.contact": "Contact",
+    "spine.services": "01 Services", "spine.how": "02 Method", "spine.company": "03 Company", "spine.contact": "04 Contact",
+    "hero.eyebrow": "AI Systems & Automation \u00b7 United States & European Union",
+    "hero.h1": "AI systems that take over the <em>repeatable work</em>.",
+    "hero.lede": "NextCore builds and operates AI agents and automations for small and mid-sized companies. We take processes that people repeat every day \u2014 qualifying enquiries, answering customers, producing content, running internal workflows \u2014 and hand them to <strong>systems that do not forget and do not wait</strong>. Engagements run as build projects and monthly retainers. All work is performed remotely.",
+    "hero.cta": "Start an assessment", "hero.cta2": "How we work",
+    "panel.title": "Runtime \u00b7 enquiry agent",
+    "trace.0": "enquiry received", "trace.0t": "web form",
+    "trace.1": "intent & fit classified", "trace.1t": "agent",
+    "trace.2": "record created", "trace.2t": "crm",
+    "trace.3": "reply drafted, sent", "trace.3t": "email",
+    "trace.4": "follow-up scheduled", "trace.4t": "t+2d",
+    "trace.5": "outcome logged", "trace.5t": "report",
+    "panel.note": "Schematic of an enquiry-handling agent. Illustration, not live data.",
+    "fact.model": "Model", "fact.modelv": "Build projects & retainers",
+    "fact.markets": "Markets", "fact.marketsv": "United States, European Union",
+    "fact.delivery": "Delivery", "fact.deliveryv": "Fully remote",
+    "sec.1": "01 / Services", "sec.2": "02 / Method", "sec.3": "03 / Company", "sec.4": "04 / Contact",
+    "services.h": "What we do",
+    "services.sub": "Three services, delivered as one system. The client keeps the business; we supply the machinery that runs inside it.",
+    "svc.1h": "AI agent build",
+    "svc.1p": "We design and build the agent: what it is allowed to do, what it must never do, which tools it can reach, and how it reports back. Delivered inside the client\u2019s existing stack, not as a separate product to learn.",
+    "svc.2h": "Workflow automation",
+    "svc.2p": "Enquiry handling, follow-up, document generation, research and reporting. Anything made of repeatable steps becomes a process that runs without someone starting it.",
+    "svc.3h": "Operation & maintenance",
+    "svc.3p": "Models change, interfaces change, business rules change. On a retainer we keep the systems running and adjust them, so they still work in twelve months.",
+    "how.h": "How we work", "how.sub": "Four steps, the same for every engagement.",
+    "step.1h": "Assessment", "step.1p": "We map which work is repeated and which of it can be handed over. Fixed scope, fixed fee.",
+    "step.2h": "Build", "step.2p": "We implement the agents and automations and connect them to the tools already in use. Typical build time is two to four weeks.",
+    "step.3h": "Operation", "step.3p": "We run and adjust the systems. Reporting is weekly, against numbers agreed up front.",
+    "step.4h": "Handover or continuation", "step.4p": "The client either takes the systems over or we keep operating them on a retainer.",
+    "company.h": "Company",
+    "company.sub": "NextCore is operated by M. De Luca. The company works with a small number of business clients at a time; we do not sell courses, memberships or consumer products.",
+    "contact.h": "Contact", "contact.sub": "Enquiries are answered within one business day.",
+    "contact.copy": "Copy email", "contact.copied": "Copied",
+    "foot.copy": "\u00a9 2026 NextCore Technologies Limited Liability Company. All rights reserved.",
+    "foot.legal": "NextCore provides business-to-business services only. We do not offer investment advice, and we make no representations about earnings."
+  },
+  de: {
+    "meta.title": "NextCore Technologies Limited Liability Company \u2014 KI-Systeme f\u00fcr Unternehmen",
+    "meta.desc": "NextCore Technologies baut und betreibt KI-Agenten und Automatisierungen f\u00fcr kleine und mittelst\u00e4ndische Unternehmen in den USA und der EU. Aufbauprojekte und monatliche Retainer.",
+    "a11y.skip": "Zum Inhalt springen",
+    "nav.services": "Leistungen", "nav.how": "Arbeitsweise", "nav.company": "Unternehmen", "nav.contact": "Kontakt",
+    "spine.services": "01 Leistungen", "spine.how": "02 Methode", "spine.company": "03 Unternehmen", "spine.contact": "04 Kontakt",
+    "hero.eyebrow": "KI-Systeme & Automatisierung \u00b7 Vereinigte Staaten & Europ\u00e4ische Union",
+    "hero.h1": "KI-Systeme, die die <em>wiederkehrende Arbeit</em> \u00fcbernehmen.",
+    "hero.lede": "NextCore baut und betreibt KI-Agenten und Automatisierungen f\u00fcr kleine und mittelst\u00e4ndische Unternehmen. Wir nehmen Prozesse, die Menschen jeden Tag wiederholen \u2014 Anfragen qualifizieren, Kunden beantworten, Inhalte produzieren, interne Abl\u00e4ufe steuern \u2014 und \u00fcbergeben sie an <strong>Systeme, die nicht vergessen und nicht warten</strong>. Mandate laufen als Aufbauprojekte und monatliche Retainer. Die gesamte Arbeit erfolgt remote.",
+    "hero.cta": "Analyse starten", "hero.cta2": "So arbeiten wir",
+    "panel.title": "Laufzeit \u00b7 Anfrage-Agent",
+    "trace.0": "Anfrage eingegangen", "trace.0t": "webformular",
+    "trace.1": "Anliegen & Passung klassifiziert", "trace.1t": "agent",
+    "trace.2": "Datensatz angelegt", "trace.2t": "crm",
+    "trace.3": "Antwort verfasst, gesendet", "trace.3t": "e-mail",
+    "trace.4": "Nachfassen terminiert", "trace.4t": "t+2t",
+    "trace.5": "Ergebnis protokolliert", "trace.5t": "report",
+    "panel.note": "Schema eines Anfrage-Agenten. Illustration, keine Echtdaten.",
+    "fact.model": "Modell", "fact.modelv": "Aufbauprojekte & Retainer",
+    "fact.markets": "M\u00e4rkte", "fact.marketsv": "Vereinigte Staaten, Europ\u00e4ische Union",
+    "fact.delivery": "Umsetzung", "fact.deliveryv": "Vollst\u00e4ndig remote",
+    "sec.1": "01 / Leistungen", "sec.2": "02 / Methode", "sec.3": "03 / Unternehmen", "sec.4": "04 / Kontakt",
+    "services.h": "Was wir tun",
+    "services.sub": "Drei Leistungen, geliefert als ein System. Der Kunde beh\u00e4lt das Gesch\u00e4ft; wir liefern die Maschinerie, die darin l\u00e4uft.",
+    "svc.1h": "KI-Agenten-Aufbau",
+    "svc.1p": "Wir entwerfen und bauen den Agenten: was er darf, was er niemals tun darf, welche Werkzeuge er erreicht und wie er zur\u00fcckmeldet. Geliefert im bestehenden Stack des Kunden, nicht als separates Produkt zum Erlernen.",
+    "svc.2h": "Workflow-Automatisierung",
+    "svc.2p": "Anfragebearbeitung, Nachfassen, Dokumentenerstellung, Recherche und Reporting. Alles, was aus wiederholbaren Schritten besteht, wird zu einem Prozess, der l\u00e4uft, ohne dass ihn jemand startet.",
+    "svc.3h": "Betrieb & Wartung",
+    "svc.3p": "Modelle \u00e4ndern sich, Schnittstellen \u00e4ndern sich, Gesch\u00e4ftsregeln \u00e4ndern sich. Im Retainer halten wir die Systeme am Laufen und passen sie an, damit sie auch in zw\u00f6lf Monaten noch funktionieren.",
+    "how.h": "So arbeiten wir", "how.sub": "Vier Schritte, f\u00fcr jedes Mandat gleich.",
+    "step.1h": "Analyse", "step.1p": "Wir erfassen, welche Arbeit sich wiederholt und welche davon \u00fcbergeben werden kann. Fester Umfang, festes Honorar.",
+    "step.2h": "Aufbau", "step.2p": "Wir implementieren die Agenten und Automatisierungen und verbinden sie mit den bereits genutzten Werkzeugen. Die \u00fcbliche Aufbauzeit betr\u00e4gt zwei bis vier Wochen.",
+    "step.3h": "Betrieb", "step.3p": "Wir betreiben und justieren die Systeme. Das Reporting erfolgt w\u00f6chentlich, gegen vorab vereinbarte Zahlen.",
+    "step.4h": "\u00dcbergabe oder Fortf\u00fchrung", "step.4p": "Der Kunde \u00fcbernimmt die Systeme entweder selbst, oder wir betreiben sie im Retainer weiter.",
+    "company.h": "Unternehmen",
+    "company.sub": "NextCore wird von M. De Luca gef\u00fchrt. Das Unternehmen arbeitet mit einer kleinen Zahl von Gesch\u00e4ftskunden gleichzeitig; wir verkaufen keine Kurse, Mitgliedschaften oder Verbraucherprodukte.",
+    "contact.h": "Kontakt", "contact.sub": "Anfragen werden innerhalb eines Werktags beantwortet.",
+    "contact.copy": "E-Mail kopieren", "contact.copied": "Kopiert",
+    "foot.copy": "\u00a9 2026 NextCore Technologies Limited Liability Company. Alle Rechte vorbehalten.",
+    "foot.legal": "NextCore erbringt ausschlie\u00dflich Business-to-Business-Leistungen. Wir bieten keine Anlageberatung und machen keine Angaben zu Verdienstm\u00f6glichkeiten."
+  }
+};
+var LANG_LABEL = { en: "EN", de: "DE" };
+var LANG = "en";
+
 (function(){
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ── language ── */
+  function detect(){
+    try { var saved = localStorage.getItem('nc-lang'); if (saved && I18N[saved]) return saved; } catch(e){}
+    var list = navigator.languages || [navigator.language || 'en'];
+    for (var i = 0; i < list.length; i++){
+      var base = String(list[i]).toLowerCase().split('-')[0];
+      if (I18N[base]) return base;
+    }
+    return 'en';
+  }
+
+  function apply(lang, remember){
+    var d = I18N[lang] || I18N.en;
+    LANG = I18N[lang] ? lang : 'en';
+    document.documentElement.lang = LANG;
+    document.title = d['meta.title'];
+    var md = document.querySelector('meta[name="description"]');
+    if (md) md.setAttribute('content', d['meta.desc']);
+    var nodes = document.querySelectorAll('[data-i18n]');
+    for (var i = 0; i < nodes.length; i++){
+      var el = nodes[i], v = d[el.getAttribute('data-i18n')];
+      if (v == null) continue;
+      if (el.hasAttribute('data-i18n-html')) el.innerHTML = v; else el.textContent = v;
+    }
+    var btns = document.querySelectorAll('#langs button');
+    for (var j = 0; j < btns.length; j++){
+      btns[j].setAttribute('aria-pressed', btns[j].getAttribute('data-lang') === LANG ? 'true' : 'false');
+    }
+    if (remember){ try { localStorage.setItem('nc-lang', LANG); } catch(e){} }
+  }
+
+  var box = document.getElementById('langs');
+  if (box){
+    var html = '';
+    for (var code in LANG_LABEL){
+      html += '<button type="button" data-lang="' + code + '" aria-pressed="false" lang="' + code + '">' + LANG_LABEL[code] + '</button>';
+    }
+    box.innerHTML = html;
+    box.addEventListener('click', function(e){
+      var b = e.target.closest('button[data-lang]');
+      if (b) apply(b.getAttribute('data-lang'), true);
+    });
+  }
+  apply(detect(), false);
 
   /* ── scroll reveals ── */
   var revs = document.querySelectorAll('[data-reveal]');
   if (reduce || !('IntersectionObserver' in window)) {
-    revs.forEach(function(el){ el.classList.add('in'); });
+    for (var r = 0; r < revs.length; r++) revs[r].classList.add('in');
   } else {
     var io = new IntersectionObserver(function(entries){
       entries.forEach(function(e){
@@ -621,7 +708,7 @@ footer a:not(.brand):hover{color:var(--accent);border-color:var(--accent)}
     revs.forEach(function(el){ io.observe(el); });
   }
 
-  /* ── header shadow line ── */
+  /* ── header line + progress ── */
   var hdr = document.getElementById('hdr');
   var bar = document.getElementById('progress');
   var ticking = false;
@@ -637,7 +724,7 @@ footer a:not(.brand):hover{color:var(--accent);border-color:var(--accent)}
   }, { passive: true });
   onScroll();
 
-  /* ── method timeline fill ── */
+  /* ── method timeline ── */
   var steps = document.getElementById('steps');
   if (steps){
     if (reduce){
@@ -648,8 +735,9 @@ footer a:not(.brand):hover{color:var(--accent);border-color:var(--accent)}
         entries.forEach(function(e){
           if (!e.isIntersecting) return;
           steps.classList.add('lit');
-          var lis = steps.querySelectorAll('li');
-          lis.forEach(function(li, i){ setTimeout(function(){ li.classList.add('lit'); }, 260 + i * 300); });
+          steps.querySelectorAll('li').forEach(function(li, i){
+            setTimeout(function(){ li.classList.add('lit'); }, 260 + i * 300);
+          });
           so.disconnect();
         });
       }, { threshold: 0.25 });
@@ -657,10 +745,11 @@ footer a:not(.brand):hover{color:var(--accent);border-color:var(--accent)}
     }
   }
 
-  /* ── spine active section ── */
+  /* ── spine scrollspy ── */
   var spineLinks = document.querySelectorAll('[data-spine]');
   if (spineLinks.length && 'IntersectionObserver' in window){
-    var secs = ['services','how','company','contact'].map(function(id){ return document.getElementById(id); }).filter(Boolean);
+    var secs = ['services','how','company','contact']
+      .map(function(id){ return document.getElementById(id); }).filter(Boolean);
     var ao = new IntersectionObserver(function(entries){
       entries.forEach(function(e){
         if (!e.isIntersecting) return;
@@ -682,9 +771,7 @@ footer a:not(.brand):hover{color:var(--accent);border-color:var(--accent)}
         r.classList.toggle('done', n < i);
       });
       i = (i + 1) % (rows.length + 2);
-      if (i >= rows.length){
-        rows.forEach(function(r){ r.classList.remove('on'); });
-      }
+      if (i >= rows.length) rows.forEach(function(r){ r.classList.remove('on'); });
     }
     var to = new IntersectionObserver(function(entries){
       entries.forEach(function(e){
@@ -699,9 +786,12 @@ footer a:not(.brand):hover{color:var(--accent);border-color:var(--accent)}
   if (copy && navigator.clipboard){
     copy.addEventListener('click', function(){
       navigator.clipboard.writeText(copy.getAttribute('data-mail')).then(function(){
-        copy.textContent = 'Copied';
+        copy.textContent = I18N[LANG]['contact.copied'];
         copy.classList.add('ok');
-        setTimeout(function(){ copy.textContent = 'Copy'; copy.classList.remove('ok'); }, 1600);
+        setTimeout(function(){
+          copy.textContent = I18N[LANG]['contact.copy'];
+          copy.classList.remove('ok');
+        }, 1600);
       });
     });
   } else if (copy){
