@@ -249,6 +249,22 @@ The markets it used to illustrate (US, EU, remote) did not disappear: they moved
 into the entity record in the Company section, where the rest of the company
 facts already live.
 
+### The header on narrow phones
+
+The brand, the language pair, the call to action and the burger need about
+356px on one row; a 360px phone offers 320 inside the gutter. Below 420px the
+spacing tightens, and below 380px the language pair leaves the header for the
+drawer, where `.drawer-langs` gives it a real touch target instead of a 25px
+one.
+
+It is deliberately moved rather than hidden — the site is bilingual and a
+German visitor on a small phone still has to be able to switch. That means
+there are two `.langs` groups in the document, so the switcher is built and
+wired over `querySelectorAll('.langs')` and `apply()` presses the state on
+every button in both. Adding a third group anywhere would work the same way;
+reverting either to `getElementById('langs')` would silently strip the drawer
+one of its behaviour.
+
 ### The journey section
 
 Pins `#how` centred and scrubs the track horizontally for exactly

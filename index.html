@@ -500,6 +500,25 @@ footer a:not(.brand):hover{color:var(--accent);border-color:var(--accent)}
 .burger[aria-expanded="true"] i:first-child{transform:translateY(3.25px) rotate(45deg)}
 .burger[aria-expanded="true"] i:last-child{transform:translateY(-3.25px) rotate(-45deg)}
 @media(max-width:1040px){.navlinks{display:none}.burger{display:grid}}
+/* Below 420px the brand, the language pair, the call to action and the burger
+   stop fitting on one row: they need 356px and a 360px phone offers 320. The
+   spacing comes off first, and under 380px the language pair moves out of the
+   header into the drawer, where it also gets a usable touch target instead of
+   a 25px one. It is never simply hidden — the site is bilingual and the switch
+   has to stay reachable. */
+@media(max-width:420px){
+  .nav{gap:12px}
+  .nav-right{gap:6px}
+  .langs button{padding:7px 6px}
+  .cta{padding:10px 13px}
+}
+.drawer-langs{display:none}
+@media(max-width:380px){
+  header .langs{display:none}
+  .drawer-langs{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 0 2px}
+  .drawer-langs>span{font:400 10.5px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)}
+  .drawer-langs .langs button{padding:14px 16px;font-size:12px}
+}
 .drawer{position:sticky;top:70px;z-index:49;background:rgba(10,11,13,.96);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
 .drawer nav{display:grid;max-width:var(--maxw);margin:0 auto;padding:8px var(--gutter) 16px}
 .drawer a{display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--ink-2);font:400 15px/1 var(--sans);padding:14px 0;border-bottom:1px solid var(--line)}
@@ -732,6 +751,10 @@ footer a:not(.brand):hover{color:var(--accent);border-color:var(--accent)}
     <a href="#company"><span class="dn">04</span><span data-i18n="nav.company">Company</span></a>
     <a href="#faq"><span class="dn">05</span><span data-i18n="nav.faq">FAQ</span></a>
     <a href="#contact"><span class="dn">06</span><span data-i18n="nav.contact">Contact</span></a>
+    <div class="drawer-langs">
+      <span data-i18n="nav.language">Language</span>
+      <div class="langs" role="group" aria-label="Language"></div>
+    </div>
   </nav>
 </div>
 
@@ -1191,7 +1214,7 @@ var I18N = {
     "contact.copy": "Copy email", "contact.copied": "Copied",
     "foot.copy": "© 2026 NextCore Technologies Limited Liability Company. All rights reserved.",
     "foot.legal": "NextCore provides business-to-business services only. We do not offer investment advice, and we make no representations about earnings.",
-    "nav.systems": "Systems", "nav.faq": "FAQ",
+    "nav.systems": "Systems", "nav.faq": "FAQ", "nav.language": "Language",
     "spine.systems": "02 Systems", "spine.faq": "05 FAQ",
     "sec.5": "05 / FAQ", "sec.6": "06 / Contact",
     "sys.h": "What we actually build",
@@ -1314,7 +1337,7 @@ var I18N = {
     "contact.copy": "E-Mail kopieren", "contact.copied": "Kopiert",
     "foot.copy": "© 2026 NextCore Technologies Limited Liability Company. Alle Rechte vorbehalten.",
     "foot.legal": "NextCore erbringt ausschließlich Business-to-Business-Leistungen. Wir bieten keine Anlageberatung und machen keine Angaben zu Verdienstmöglichkeiten.",
-    "nav.systems": "Systeme", "nav.faq": "FAQ",
+    "nav.systems": "Systeme", "nav.faq": "FAQ", "nav.language": "Sprache",
     "spine.systems": "02 Systeme", "spine.faq": "05 FAQ",
     "sec.5": "05 / FAQ", "sec.6": "06 / Kontakt",
     "sys.h": "Was wir konkret bauen",
@@ -1466,7 +1489,7 @@ var LANG = "en";
     buildTicker(d['ticker']);
     var h1 = document.getElementById('heroH1');
     if (h1) splitWords(h1);
-    var btns = document.querySelectorAll('#langs button');
+    var btns = document.querySelectorAll('.langs button');
     for (var j = 0; j < btns.length; j++){
       btns[j].setAttribute('aria-pressed', btns[j].getAttribute('data-lang') === LANG ? 'true' : 'false');
     }
@@ -1474,14 +1497,17 @@ var LANG = "en";
     if (hasGSAP) ScrollTrigger.refresh();
   }
 
-  var box = document.getElementById('langs');
-  if (box){
-    var html = '';
-    for (var code in LANG_LABEL){
-      html += '<button type="button" data-lang="' + code + '" aria-pressed="false" lang="' + code + '">' + LANG_LABEL[code] + '</button>';
-    }
-    box.innerHTML = html;
-    box.addEventListener('click', function(e){
+  /* There are two of these — one in the header, one in the drawer for
+     screens too narrow to carry it in the header — so both are built and
+     wired, and apply() presses the state on all of them. */
+  var html = '';
+  for (var code in LANG_LABEL){
+    html += '<button type="button" data-lang="' + code + '" aria-pressed="false" lang="' + code + '">' + LANG_LABEL[code] + '</button>';
+  }
+  var boxes = document.querySelectorAll('.langs');
+  for (var bi = 0; bi < boxes.length; bi++){
+    boxes[bi].innerHTML = html;
+    boxes[bi].addEventListener('click', function(e){
       var b = e.target.closest('button[data-lang]');
       if (b) apply(b.getAttribute('data-lang'), true);
     });
