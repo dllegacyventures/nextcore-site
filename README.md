@@ -51,6 +51,38 @@ Two statements in `privacy/` are claims about the outside world that go stale:
 GitHub's certification under the EU–U.S. Data Privacy Framework, and the retention
 periods. Re-check both when you touch the file.
 
+## Hosting and HTTPS
+
+GitHub Pages off `main`, apex domain `nextcore-technologies.com` from the
+`CNAME` file. GoDaddy nameservers, four A records to the Pages IPs, `www` as a
+CNAME to `dllegacyventures.github.io`. No CAA record — do not add one without
+including `letsencrypt.org`, or renewals will start failing.
+
+HTTPS was dead for a long time without anyone noticing: the domain resolved and
+the site served over plain HTTP, but GitHub had never issued a certificate
+(`https_certificate: null`, "Enforce HTTPS" off), so every `https://` request
+failed the hostname check outright. DNS was not the cause and never had been.
+The fix is to make Pages re-run provisioning by clearing the custom domain and
+setting it straight back:
+
+    gh api -X PUT repos/dllegacyventures/nextcore-site/pages -f cname=""
+    gh api -X PUT repos/dllegacyventures/nextcore-site/pages -f cname="nextcore-technologies.com"
+    # wait for https_certificate.state to reach "approved" (~2 min), then:
+    gh api -X PUT repos/dllegacyventures/nextcore-site/pages -F https_enforced=true
+
+The site is **offline between those first two calls**, so do not start this
+unless you intend to finish it. The certificate is Let's Encrypt, covers apex
+and `www`, and renews itself as long as the domain stays attached and the DNS
+keeps pointing at Pages. `https_enforced` is what turns plain HTTP into a 301;
+without it both schemes serve and nothing redirects.
+
+Verify with all three, not just the first — apex, `www` and plain HTTP each
+have their own failure mode:
+
+    curl -sI https://nextcore-technologies.com/ | head -1
+    curl -s -o /dev/null -w '%{http_code} -> %{url_effective}\n' -L https://www.nextcore-technologies.com/
+    curl -s -o /dev/null -w '%{http_code} -> %{url_effective}\n' -L http://nextcore-technologies.com/
+
 ## No third-party requests
 
 Opening a page on this site contacts **no** server other than the host:
