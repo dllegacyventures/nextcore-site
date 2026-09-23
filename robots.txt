@@ -1,4 +1,58 @@
 User-agent: *
 Allow: /
 
+# KI-Suche ausdrücklich erlaubt (23.09.2026) — sonst sperrt sie irgendwann jemand versehentlich aus
+
+# OpenAI — Training und ChatGPT-Suche
+User-agent: GPTBot
+Allow: /
+
+# OpenAI — Index hinter ChatGPT Search
+User-agent: OAI-SearchBot
+Allow: /
+
+# ChatGPT ruft die Seite live ab, wenn jemand fragt
+User-agent: ChatGPT-User
+Allow: /
+
+# Anthropic — Crawler
+User-agent: ClaudeBot
+Allow: /
+
+# Claude ruft die Seite live ab
+User-agent: Claude-User
+Allow: /
+
+# Anthropic — Suchindex
+User-agent: Claude-SearchBot
+Allow: /
+
+# Perplexity — Index
+User-agent: PerplexityBot
+Allow: /
+
+# Perplexity ruft live ab
+User-agent: Perplexity-User
+Allow: /
+
+# Google — Gemini/AI Overviews
+User-agent: Google-Extended
+Allow: /
+
+# Apple Intelligence
+User-agent: Applebot-Extended
+Allow: /
+
+# Bing — speist auch ChatGPT
+User-agent: Bingbot
+Allow: /
+
+# Common Crawl — Grundlage vieler Modelle
+User-agent: CCBot
+Allow: /
+
+# Meta AI
+User-agent: meta-externalagent
+Allow: /
+
 Sitemap: https://nextcore-technologies.com/sitemap.xml
